@@ -13,9 +13,17 @@ class UserModel extends HiveObject {
   @HiveField(2)
   String hashedPassword;
 
+  @HiveField(3)
+  String? profilePicPath; // Tambahkan ini
+
+  @HiveField(4)
+  String? kesanPesan; // (opsional, jika ingin simpan di user)
+
   UserModel({
     required this.username,
     required this.email,
     required this.hashedPassword,
+    this.profilePicPath,
+    this.kesanPesan,
   });
 }

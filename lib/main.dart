@@ -17,8 +17,7 @@ const String taskName = "motor_reminder_task";
 
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
+    final androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'reminder_channel',
       'Motor Reminder',
       channelDescription: 'Notifikasi pengingat cek motor',
@@ -26,7 +25,7 @@ void callbackDispatcher() {
       priority: Priority.high,
       showWhen: false,
     );
-    const NotificationDetails platformChannelSpecifics =
+    final platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
 
     await flutterLocalNotificationsPlugin.show(

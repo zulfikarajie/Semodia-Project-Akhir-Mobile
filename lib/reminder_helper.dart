@@ -2,7 +2,7 @@ import 'package:workmanager/workmanager.dart';
 
 const String taskName = "motor_reminder_task";
 
-Future<void> scheduleReminder(int intervalHours) async {
+Future<void> scheduleReminder(int intervalMinutes) async {
   // Cancel task lama (jika ada)
   await Workmanager().cancelByUniqueName(taskName);
 
@@ -10,8 +10,8 @@ Future<void> scheduleReminder(int intervalHours) async {
   await Workmanager().registerPeriodicTask(
     "1",
     taskName,
-    frequency: Duration(hours: intervalHours),
-    initialDelay: Duration(minutes: 1), // opsional
+    frequency: Duration(minutes: intervalMinutes),
+    initialDelay: Duration(minutes: 1),
     constraints: Constraints(
       networkType: NetworkType.not_required,
       requiresBatteryNotLow: false,
@@ -20,4 +20,12 @@ Future<void> scheduleReminder(int intervalHours) async {
       requiresStorageNotLow: false,
     ),
   );
+}
+
+Future<void> activateTestNotif() async {
+  await scheduleReminder(1); // 1 menit sekali
+}
+
+Future<void> activateNormalNotif() async {
+  await scheduleReminder(60 * 24); // 1 hari sekali
 }

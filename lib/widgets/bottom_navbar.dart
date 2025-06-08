@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../screens/home_page.dart';
 import '../screens/motor_list_page.dart';
-import '../screens/maps_page.dart'; // Tambahkan import ini
+import '../screens/maps_page.dart';
+import '../screens/profile_page.dart';
+import '../screens/speedometer_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
@@ -16,7 +18,9 @@ class _BottomNavbarState extends State<BottomNavbar> {
   final List<Widget> _pages = [
     HomePage(),
     MotorListPage(),
-    MapsPage(), // Tambahkan MapsPage di sini
+    MapsPage(),
+    ProfilePage(),
+    SpeedometerPage(), // Tambahkan ProfilePage di sini
   ];
 
   void _onItemTapped(int index) {
@@ -32,6 +36,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -44,6 +49,14 @@ class _BottomNavbarState extends State<BottomNavbar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
             label: 'Maps',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.speed),
+            label: 'Speedo',
           ),
         ],
       ),
